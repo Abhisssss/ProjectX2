@@ -1,0 +1,24 @@
+
+
+{% load static %}
+
+{% block content %}
+  <form method="get" enctype="multipart/form-data">
+    {% csrf_token %}
+   DepartmentId <input type="text" name="did" >
+   <br>
+   DepartmentName <input type="text" name="dname">
+   <br>
+   <br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a>
+Status: {{myfile}}
+
+    </p>
+  {% endif %}
+
+{% endblock %}

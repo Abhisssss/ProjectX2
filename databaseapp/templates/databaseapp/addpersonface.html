@@ -1,0 +1,97 @@
+{% load staticfiles %}
+{% load static %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Attendence System</title>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="{%static 'css/bootstrap.css' %}" rel="stylesheet" />
+    <!-- FONT AWESOME CSS -->
+    <link href="{%static  'css/font-awesome.min.css' %}" rel="stylesheet" />
+     <!-- FLEXSLIDER CSS -->
+    <link href="{% static  'css/flexslider.css' %}" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="{% static  'css/style.css' %}" rel="stylesheet" />    
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css' />
+</head>
+<body >
+   
+ <div class="navbar navbar-inverse navbar-fixed-top " id="menu">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img class="logo-custom" src="assets/img/logo180-50.png" alt=""  /></a>
+            </div>
+            <div class="navbar-collapse collapse move-me">
+                <ul class="nav navbar-nav navbar-right">
+                 <li><a href="{% url 'detect_face' %}">UPDATE ATTENDENCE</a></li>
+                    <li><a href="{% url 'create_person_face' %}">ADD STUDENT</a></li>
+                    <li><a href="{% url 'add_person_face' %}">EDIT STUDENT</a></li>
+                    <li><a href="{% url 'training' %}">TRAIN SYSTEM</a></li>
+                </ul>   
+                </ul>
+            </div>
+           
+        </div>
+    </div>
+ <div id="edit-sec" >
+    <div id="update-sec" class="container set-pad" >
+             <div class="row text-center">
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                     <h1 data-scroll-reveal="enter from the bottom after 0.2s"  class="header-line">ADD STUDENT  FACE</h1>
+                     <p data-scroll-reveal="enter from the bottom after 0.3s" >    
+                 </div>
+
+             </div>
+             <!--/.HEADER LINE END-->
+<div class="row" >
+           <div class="row set-row-pad"  data-scroll-reveal="enter from the bottom after 0.5s" >
+           
+               
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+   <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+                        <b>USN</b>
+                        <div class="form-group">
+                            <input type="text" class="form-control "  required="required" placeholder="Enter Student USN" name="student_usn" />
+                        </div>
+                        
+                        <b>UPLOAD STUDENT FACE</b>
+                        <div class="form-group">
+                            <input type="file" class="form-control" name = "face" >
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info btn-block btn-lg">SUBMIT</button>
+                        </div>
+
+                    </form>
+      {% if status %}
+          <p>Status: <a href="{{ status }}">{{ status }}</a>
+
+
+    </p>
+  {% endif %}
+                </div>
+        </div>
+   
+   <!--  Core Bootstrap Script -->
+    <script src="{%static 'js/bootstrap.js' %}"></script>
+    <!--  Flexslider Scripts --> 
+    <script src="{%static 'js/jquery.flexslider.js' %}"></script>
+     <!--  Scrolling Reveal Script -->
+    <script src="{%static 'js/scrollReveal.js' %}"></script>
+    <!--  Scroll Scripts --> 
+    <script src="{%static 'js/jquery.easing.min.js' %}"></script>
+    <!--  Custom Scripts --> 
+    <script src="{%static 'js/custom.js' %}"></script>
+</body>
+</html>

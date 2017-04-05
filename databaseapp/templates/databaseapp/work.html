@@ -1,0 +1,231 @@
+{% load staticfiles %}
+{% load static %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Attendence System</title>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="{%static 'project_admin/css/bootstrap.css' %}" rel="stylesheet" />
+    <!-- FONT AWESOME CSS -->
+    <link href="{%static  'project_admin/css/font-awesome.min.css' %}" rel="stylesheet" />
+     <!-- FLEXSLIDER CSS -->
+    <link href="{% static  'project_admin/project_admin/css/flexslider.css' %}" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="{% static  'project_admin/css/style.css' %}" rel="stylesheet" />    
+    <!-- Google	Fonts -->
+	  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css' />
+</head>
+<body >
+   
+ <div class="navbar navbar-inverse navbar-fixed-top " id="menu">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img class="logo-custom" src="assets/img/logo180-50.png" alt=""  /></a>
+            </div>
+            <div class="navbar-collapse collapse move-me">
+                <ul class="nav navbar-nav navbar-right">
+                     <li ><a href="#update-sec">UPDATE ATTENDENCE</a></li>
+                     <li><a href="#add-sec">ADD STUDENT</a></li>
+                     <li><a href="{% url 'edit' %}">EDIT STUDENT</a></li>
+					           <li><a href="#train-sec">TRAIN SYSTEM</a></li>
+                </ul>
+            </div>
+           
+        </div>
+    </div>
+      <!--NAVBAR SECTION END-->   
+         <div id="update-sec" class="container set-pad" >
+             <div class="row text-center">
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                     <h1 data-scroll-reveal="enter from the bottom after 0.2s"  class="header-line">UPDATE ATTENDENCE </h1>
+                     <p data-scroll-reveal="enter from the bottom after 0.3s" >    
+                 </div>
+
+             </div>
+             <!--UPDATE ATTENDENCE HADER LINE END-->
+
+            <div class="row" >
+           <div class="row set-row-pad"  data-scroll-reveal="enter from the bottom after 0.5s" >
+           
+               
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <form>
+                        <b>CLASS</b>
+                        <div class="form-group">
+                            <input type="text" class="form-control "  required="required" placeholder="Enter Class" id="student_class" />
+                        </div>
+                      
+                        <b>DEPARTMENT</b>
+                        <div class="form-group">
+                            <select class="form-control" id = "student_department">
+                              <option value="computer_science">Computer Science</option>
+                              <option value="information_science">Information Science</option>
+                              <option value="electrical_ engineering">Electrical Engineering</option>
+                              <option value="electrical_ engineering">Electrical Engineering</option>
+                              <option value="electroincs_ engineering">Electronic Engineering</option>
+                              <option value="mechanical_ engineering">Mechanical Engineering</option>
+                            </select> 
+                        </div>
+                        <b>UPLOAD</b>
+                        <div class="form-group">
+                            <input type="file" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info btn-block btn-lg">SUBMIT</button>
+                        </div>
+
+                    </form>
+                </div>
+              </div>
+   <!-- UPDATE ATTENDENCE SECTION END-->
+    
+      <div id="add-sec" class="container set-pad" >
+             <div class="row text-center">
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                     <h1 data-scroll-reveal="enter from the bottom after 0.2s"  class="header-line">ADD STUDENT </h1>
+                     <p data-scroll-reveal="enter from the bottom after 0.3s" >    
+                 </div>
+
+             </div>
+             <!--/.HEADER LINE END-->
+<div class="row" >
+           <div class="row set-row-pad"  data-scroll-reveal="enter from the bottom after 0.5s" >
+           
+               
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <form>
+                        <b>NAME</b>
+                        <div class="form-group">
+                            <input type="text" class="form-control "  required="required" placeholder="Enter Studene Name" id="student_name" />
+                        </div>
+
+                        <b>USN</b>
+                        <div class="form-group">
+                            <input type="text" class="form-control "  required="required" placeholder="Enter Student USN" id="student_usn" />
+                        </div>
+                        <b>SEMESTER</b>
+                        <div class="form-group">
+                            <input type="text" class="form-control "  required="required" placeholder="Enter Student Semester" id="student_sem" />
+                        </div>
+                        <b>DEPARTMENT</b>
+                        <div class="form-group">
+                            <select class="form-control" id = "student_department">
+                              <option value="computer_science">Computer Science</option>
+                              <option value="information_science">Information Science</option>
+                              <option value="electrical_ engineering">Electrical Engineering</option>
+                              <option value="electrical_ engineering">Electrical Engineering</option>
+                              <option value="electroincs_ engineering">Electronic Engineering</option>
+                              <option value="mechanical_ engineering">Mechanical Engineering</option>
+                            </select> 
+                        </div>
+                        <b>UPLOAD STUDENT FACE</b>
+                        <div class="form-group">
+                            <input type="file" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info btn-block btn-lg">SUBMIT</button>
+                        </div>
+
+                    </form>
+                </div>
+              </div>
+      <!-- ADD STUDENT SECTION END-->
+	  <div id="edit-sec" >
+    <div id="update-sec" class="container set-pad" >
+             <div class="row text-center">
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                     <h1 data-scroll-reveal="enter from the bottom after 0.2s"  class="header-line">EDIT STUDENT  </h1>
+                     <p data-scroll-reveal="enter from the bottom after 0.3s" >    
+                 </div>
+
+             </div>
+             <!--/.HEADER LINE END-->
+<div class="row" >
+           <div class="row set-row-pad"  data-scroll-reveal="enter from the bottom after 0.5s" >
+           
+               
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <form>
+                        <b>USN</b>
+                        <div class="form-group">
+                            <input type="text" class="form-control "  required="required" placeholder="Enter Student USN" id="student_usn" />
+                        </div>
+                        <b>SEMESTER</b>
+                        <div class="form-group">
+                            <input type="text" class="form-control "  required="required" placeholder="Enter Student Semester" id="student_sem" />
+                        </div>
+                        <b>DEPARTMENT</b>
+                        <div class="form-group">
+                            <select class="form-control" id = "student_department">
+                              <option value="computer_science">Computer Science</option>
+                              <option value="information_science">Information Science</option>
+                              <option value="electrical_ engineering">Electrical Engineering</option>
+                              <option value="electrical_ engineering">Electrical Engineering</option>
+                              <option value="electroincs_ engineering">Electronic Engineering</option>
+                              <option value="mechanical_ engineering">Mechanical Engineering</option>
+                            </select> 
+                        </div>
+                        <b>UPLOAD STUDENT FACE</b>
+                        <div class="form-group">
+                            <input type="file" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info btn-block btn-lg">SUBMIT</button>
+                        </div>
+
+                    </form>
+                </div>
+        </div>
+    <!-- FACULTY SECTION END-->
+    <div id="train-sec"   >
+
+      <div id="add-sec" class="container set-pad" >
+             <div class="row text-center">
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                     <h1 data-scroll-reveal="enter from the bottom after 0.2s"  class="header-line">TRAIN SYSTEM </h1>
+                     <p data-scroll-reveal="enter from the bottom after 0.3s" >    
+                 </div>
+
+             </div>
+             <!--/.HEADER LINE END-->
+<div class="row" >
+           <div class="row set-row-pad"  data-scroll-reveal="enter from the bottom after 0.5s" >
+           
+               
+                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <form>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info btn-block btn-lg">TRAIN SYSTEM</button>
+                        </div>
+
+                    </form>
+                </div>
+              </div>
+      <!-- ADD STUDENT SECTION END-->
+     <!-- FOOTER SECTION END-->
+   
+    <!--  Jquery Core Script -->
+    <script src="{%static 'project_admin/js/jquery-1.10.2.js' %}"></script>
+    <!--  Core Bootstrap Script -->
+    <script src="{%static 'project_admin/js/bootstrap.js' %}"></script>
+    <!--  Flexslider Scripts --> 
+    <script src="{%static 'project_admin/js/jquery.flexslider.js' %}"></script>
+     <!--  Scrolling Reveal Script -->
+    <script src="{%static 'project_admin/js/scrollReveal.js' %}"></script>
+    <!--  Scroll Scripts --> 
+    <script src="{%static 'project_admin/js/jquery.easing.min.js' %}"></script>
+    <!--  Custom Scripts --> 
+    <script src="{%static 'project_admin/js/custom.js' %}"></script>
+</body>
+</html>

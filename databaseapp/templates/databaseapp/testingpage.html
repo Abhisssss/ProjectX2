@@ -1,0 +1,34 @@
+
+{% load staticfiles %}
+{% load static %}
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'testing/style.css' %}" />
+</head>
+<body >
+<h1><a href="/">TestingPage</a></h1>
+{% block content %}
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+   USN <input type="text" name="usn" >
+   <br>
+   Name <input type="text" name="name">
+   <br>
+   file <input type="file" name="myfile">
+   <br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a>
+Status: {{myfile}}
+
+    </p>
+  {% endif %}
+
+{% endblock %}
+</body>
+</html>

@@ -5,6 +5,8 @@ from django.template import loader
 from django.template import Context
 
 from django.conf import settings
+from databaseapp.models import createPerson as cp
+from databaseapp.models import Student as stu
 import json
 def identifyFace(request):
     headers1 = {
@@ -54,6 +56,7 @@ def identifyFace(request):
              conn.close()
         except Exception as e:
               print("[Errno {0}] {1}".format(e.errno, e.strerror))
+        zipped=""
 
         try:
             print "ok0"
@@ -75,24 +78,54 @@ def identifyFace(request):
             jsondata["maxNumOfCandidatesReturned"]=5
             jsondata['confidenceThreshold']=0.5
             body=json.dumps(jsondata)
-            print body
+            #print body
+            print "ok jsondata"
 
 
             conn = httplib.HTTPSConnection('westus.api.cognitive.microsoft.com')
             conn.request("POST", "/face/v1.0/identify?%s" % params2, body, headers2)
             response = conn.getresponse()
             data = response.read()
-            print(data)
+            #print(data)
+            print "ok candidates"
             finaloutput=json.loads(data)
+            usnlist=[]
+            confidencelist=[]
+            namelist=[]
+            
             for i in finaloutput:
-                print i
+                if len(i['candidates'])!=0:
+                    k=i['candidates']
+                    for j in k:
+                        print j['personId'],j['confidence']
+                        usn=""
+                        query1=""
+                        usn= cp.objects.values_list('student_usn').filter(person_id=j['personId'])
+                        k= usn[0]
+                        l=k[0]
+                        print l
+
+                        query2 = stu.objects.values_list('student_name').filter(student_usn=l)
+                        name=query2[0]
+                        name=name[0]
+
+                        if l not in usnlist:
+
+
+                            namelist.append(name)
+                            usnlist.append(l)
+                            confidencelist.append(j['confidence'])
+            zipped=zip(namelist,usnlist,confidencelist)
+            print namelist
+            print usnlist
+            print  confidencelist
             conn.close()
         except Exception as e:
             print e
             #print("[Errno {0}] {1}".format(e.errno, e.strerror))
 
         return render(request, 'databaseapp/identifyface.html', {
-            'output': data
+            'output': zipped
         })
     return render(request, 'databaseapp/identifyface.html')
 

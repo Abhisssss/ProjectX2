@@ -22,11 +22,21 @@
     <button type="submit">Submit</button>
   </form>
 
-  {% if uploaded_file_url %}
-    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a>
-Status: {{myfile}}
+  {% if zip %}
+  
+  <table cellspacing="10">
 
+  <tr><td>Name </td><td>Usn</td><td>Confidence</td></tr>
+  <tr width="550" ></tr>
+<p>
+    <p>status: {% for i in zip %}
+    <tr><td>{{i.0}}</td><td>{{i.1}}</td><td>{{i.2}}</td></tr>
+    {%endfor %}
     </p>
+
+
+    </p></table>
+
   {% endif %}
 
 {% endblock %}

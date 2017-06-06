@@ -35,6 +35,7 @@ def identifyFace(request):
         print "if ok1"
 
         data=myfile.read() 
+        image=data
         department = str(request.POST.get('student_department','')) 
         sem = str(request.POST.get('student_sem','')) 
         groupid=sem+department
@@ -125,7 +126,7 @@ def identifyFace(request):
             #print("[Errno {0}] {1}".format(e.errno, e.strerror))
 
         return render(request, 'databaseapp/identifyface.html', {
-            'output': zipped
+            'output': zipped, 'image':image
         })
     return render(request, 'databaseapp/identifyface.html')
 

@@ -4,6 +4,25 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+       function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width()
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximu<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -89,17 +108,16 @@
                         </div>
                         <b>UPLOAD</b>
                         <div class="form-group">
-                            <input type="file" class="form-control" name="face">
+                            <input type="file" class="form-control" name="face" onchange="readURL(this);">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-info btn-block btn-lg">SUBMIT</button>
                         </div>
-
-                    </form>
-                   
-  				  {% if output %}
+        
+            {% if output %}
   <h1><center>Identified People</center></h1>
   <center>
+  <img id="blah" src="#" alt="your image" />
   <table cellspacing="20" aligh="center">
 
   <tr ><td><b>Name</b> </td><td><b>Usn</b></td><td><b>Confidence</b></td></tr>
@@ -116,6 +134,8 @@
     </center>
 
   {% endif %}
+                    </form>
+
                 </div>
               </div>
    <!-- UPDATE ATTENDENCE SECTION END-->
